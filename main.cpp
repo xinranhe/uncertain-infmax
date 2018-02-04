@@ -13,7 +13,6 @@
 #include <unordered_set>
 using namespace std;
 
-#define IS_WIN false
 #define IS_LOG_TO_FILE true
 
 string kGraphFolder = "./graph/";
@@ -23,15 +22,10 @@ string kLogFolder = "./log/";
 void init()
 {
 	srand((unsigned int)time(0));
-	if(IS_WIN) {
-		kGraphFolder = ".\\graph\\";
-		kResultFolder = ".\\result\\";
-		kLogFolder = ".\\log\\";
-	} else {
-		kGraphFolder = "./graph/";
-		kResultFolder = "./result/";
-		kLogFolder = "./log/";
-	}
+	kGraphFolder = "./graph/";
+	kResultFolder = "./result/";
+	kLogFolder = "./log/";
+
 	if(IS_LOG_TO_FILE) {
 		string logFile = kLogFolder + "log.txt";
 		freopen(logFile.c_str(), "w", stdout);
@@ -110,44 +104,7 @@ void mainRunICDetExp(string graphName) {
 
 	mainExp.runCascInfDiffMaxExperiment();
 }
-/*
-void mainRunLPExp() {
-	string testGraphFile = "Haiti_processed.graph";
-	string mainResultFile = "Haiti_processed_LP.result";
-	string resultFilePath = kResultFolder + mainResultFile;
 
-	ofstream fout;
-	fout.open(resultFilePath.c_str());
-
-	vector<double> weightParameters;
-	weightParameters.push_back(0.01);
-	weightParameters.push_back(0.02);
-	weightParameters.push_back(0.05);
-	weightParameters.push_back(0.1);
-
-	vector<double> detParameters;
-	detParameters.push_back(0.01);
-	detParameters.push_back(0.05);
-	detParameters.push_back(0.1);
-	detParameters.push_back(0.2);
-	detParameters.push_back(0.5);
-	
-	int k = 20;
-	int numSim = 500;
-	int numRound = 5;
-
-	for(int i=0;i<weightParameters.size();i++) {
-		for(int j=0;j<detParameters.size();j++) {
-			double edgeWeight = weightParameters[i];
-			double edgeDet = detParameters[j];
-			LPExpResult result = runLPComparisonExp(kGraphFolder + testGraphFile, edgeWeight, edgeDet, k, numSim, numRound);
-			fout << edgeWeight << "\t" << edgeDet << "\t" << result.greedySolution << "\t" << result.LPSolution << endl; 
-			cout << edgeWeight << "\t" << edgeDet << "\t" << result.greedySolution << "\t" << result.LPSolution << endl; 
-		}
-	}
-	fout.close();
-}
-*/
 int main(int argc, char** argv) {
 	init();
 
