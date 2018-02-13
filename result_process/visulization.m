@@ -21,13 +21,6 @@ for gi = 1:size(graphNames,2)
     for ri = 1:rn
         edgeI = find(YValues==resultMtx(ri,1));
         detI = find(XValues==resultMtx(ri,2));
-        % max
-        plotMtx(detI, edgeI ,1) = resultMtx(ri, 18); 
-        % Min
-        plotMtx(detI, edgeI, 2) = resultMtx(ri, 21);
-        % Obv
-        plotMtx(detI, edgeI, 3) = resultMtx(ri, 24);
-
         plot2Mtx(detI, edgeI) = resultMtx(ri, 6);
         plot2Mtx(6, edgeI) = resultMtx(ri, 5);
 
