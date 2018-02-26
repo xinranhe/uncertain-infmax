@@ -2,7 +2,7 @@
 Implementation of paper [Stability of Influence Maximization](http://arxiv.org/abs/1501.04579)
 
 ## Usage
-The main algorithms are implemented with c++ and built with Bazel. The experiments can be run with the following steps.
+The main algorithms are implemented with c++ and built with Bazel. The experiments can be run with the following steps. The code is tested only on Ubuntu.
 
 1. Install [bazel](https://docs.bazel.build/versions/master/install.html)
 2. Build code by running ```bazel build :all```. The code uses openmp. Make sure it is enabled before building the code.
@@ -20,3 +20,4 @@ The format of the input graph is as follows:
 ## Parse and Visualize Experiment Result
 1. Runnign the experiment generates a ```GraphName.result``` file in the result folder.
 2. Process the result file to csv: ```python result_process/result_parser.py EXP_NAME```
+3. Use matlab with the script ```visulization.m``` to generate the 3D bar plots.
